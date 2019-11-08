@@ -51,15 +51,18 @@
   };
 </script>
 
-  <meta name="keywords" content="python,programming,coding">
-<meta property="og:type" content="website">
-<meta property="og:title" content="buu coding">
-<meta property="og:url" content="https:&#x2F;&#x2F;yanxizhen.github.io&#x2F;archives&#x2F;index.html">
+  <meta name="description" content="#简易配置hexo博客到github pages   node,git下载安装  node下载安装 Git下载安装   hexo安装配置  进入node.js命令行界面,执行’npm install -g hexo-cli’  在你想要创建站点的路径下,执行’hexo init &amp;lt;文件夹名称&amp;gt;’  进入新创建的文件夹,执行’npm install’  执行’hexo server’,即">
+<meta name="keywords" content="hexo,github,github pages">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows下简易配置hexo博客到github pages">
+<meta property="og:url" content="https:&#x2F;&#x2F;yanxizhen.github.io&#x2F;2019-11-08&#x2F;%E7%AE%80%E6%98%93%E9%85%8D%E7%BD%AEhexo%E5%8D%9A%E5%AE%A2%E5%88%B0github-pages&#x2F;index.html">
 <meta property="og:site_name" content="buu coding">
+<meta property="og:description" content="#简易配置hexo博客到github pages   node,git下载安装  node下载安装 Git下载安装   hexo安装配置  进入node.js命令行界面,执行’npm install -g hexo-cli’  在你想要创建站点的路径下,执行’hexo init &amp;lt;文件夹名称&amp;gt;’  进入新创建的文件夹,执行’npm install’  执行’hexo server’,即">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-08T10:04:13.194Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://yanxizhen.github.io/archives/">
+<link rel="canonical" href="https://yanxizhen.github.io/2019-11-08/%E7%AE%80%E6%98%93%E9%85%8D%E7%BD%AEhexo%E5%8D%9A%E5%AE%A2%E5%88%B0github-pages/">
 
 
 <script id="page-configurations">
@@ -67,13 +70,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
-    isArchive: true
+    isArchive: false
   };
 </script>
 
-  <title>归档 | buu coding</title>
+  <title>Windows下简易配置hexo博客到github pages | buu coding</title>
   
 
 
@@ -167,47 +170,115 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 1 篇日志。 继续努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yanxizhen.github.io/2019-11-08/%E7%AE%80%E6%98%93%E9%85%8D%E7%BD%AEhexo%E5%8D%9A%E5%AE%A2%E5%88%B0github-pages/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="布欧">
+      <meta itemprop="description" content>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="buu coding">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Windows下简易配置hexo博客到github pages
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-11-08 15:46:47 / 修改时间：18:04:13" itemprop="dateCreated datePublished" datetime="2019-11-08T15:46:47+08:00">2019-11-08</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2019</h1>
+        <p>#简易配置hexo博客到github pages</p>
+<hr>
+<ol>
+<li><p>node,git下载安装</p>
+<ul>
+<li><a href="https://nodejs.org/zh-cn/download/" target="_blank" rel="external nofollow noopener noreferrer">node下载安装</a></li>
+<li><a href="https://git-scm.com" target="_blank" rel="external nofollow noopener noreferrer">Git下载安装</a></li>
+</ul>
+</li>
+<li><p>hexo安装配置</p>
+<ul>
+<li><p>进入node.js命令行界面,执行’npm install -g hexo-cli’</p>
+</li>
+<li><p>在你想要创建站点的路径下,执行’hexo init &lt;文件夹名称&gt;’</p>
+</li>
+<li><p>进入新创建的文件夹,执行’npm install’</p>
+</li>
+<li><p>执行’hexo server’,即可在本机地址的4000端口看到初始站点页面</p>
+</li>
+<li><p>优化seo：执行下面两条命令安装sitemap插件<br>‘’’<br>npm install hexo-generator-sitemap –save<br>npm install hexo-generator-baidu-sitemap –save<br>‘’’</p>
+</li>
+<li><p>添加到sitemap字段到根目录的_config.yml<br>‘’’markdown<br>sitemap:<br>path: sitemap.xml</p>
+<p>baidusitemap:<br>path: baidusitemap.xml<br>‘’’</p>
+</li>
+<li><p>‘hexo go’一下,即可看到sources文件夹下生成了两个对应的sitemap文件  </p>
+</li>
+</ul>
+</li>
+<li><p>主题配置</p>
+<ul>
+<li>配置主题,这里我使用最流行的next主题,执行’git clone <a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="external nofollow noopener noreferrer">https://github.com/theme-next/hexo-theme-next</a> themes/next’ </li>
+<li>将根目录下的_config.yml里的theme字段改为next </li>
+</ul>
+</li>
+<li><p>上传到github pages</p>
+<ul>
+<li>在github里建一个公开仓库,仓库名为’用户名.github.io’</li>
+<li>安装插件’npm install hexo-deployer-git –save’</li>
+<li>修改根目录下的_config.yml文件,添加下面代码<br>‘’’<br>deploy:<br>type: ‘git’<br>repo:<br>  github: <a href="https://github.com/用户名/用户名.github.io.git" target="_blank" rel="external nofollow noopener noreferrer">https://github.com/用户名/用户名.github.io.git</a><br>branch: master<br>‘’’</li>
+<li>在站点文件夹下运行git bash,执行命令<br>‘’’<br>git config –global user.name “用户名”<br>git config –global user.email “邮箱”<br>ssh-keygen -t rsa -C ‘邮箱’<br>‘’’</li>
+<li>将生成的ssh key添加到github的setting里的ssh key里面<br>再执行’ssh -T <a href="mailto:git@github.com" target="_blank" rel="external nofollow noopener noreferrer">git@github.com</a>‘,后面即可使用’hexo g -d’将站点同步到github</li>
+</ul>
+</li>
+</ol>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated" datetime="2019-11-08T15:46:47+08:00" content="2019-11-08">
-          11-08
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/hexo-github-github-pages/" rel="tag"># hexo,github,github pages</a>
+          </div>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019-11-08/%E7%AE%80%E6%98%93%E9%85%8D%E7%BD%AEhexo%E5%8D%9A%E5%AE%A2%E5%88%B0github-pages/" itemprop="url">
-            <span itemprop="name">Windows下简易配置hexo博客到github pages</span>
-          </a>
-      </h2>
+        
 
-    </header>
+      </footer>
+    
   </article>
+  
+  
+  
 
-
-    </div>
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
