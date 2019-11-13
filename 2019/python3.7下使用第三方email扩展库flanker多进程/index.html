@@ -60,7 +60,7 @@
 <meta property="og:site_name" content="buu coding">
 <meta property="og:description" content="python3.7下使用第三方email扩展库flanker多进程批量解析eml格式文件信息到csvemail解析库flanker由mailgun开源的Flanker - email address and MIME parsing for Python是一个解析高效、容错率不错的python第三方扩展库。python 3也可以正常使用，安装通过pip install flanker即可。该库包含">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-13T03:22:51.970Z">
+<meta property="og:updated_time" content="2019-11-13T03:29:18.756Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://yanxizhen.github.io/2019/python3.7%E4%B8%8B%E4%BD%BF%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9email%E6%89%A9%E5%B1%95%E5%BA%93flanker%E5%A4%9A%E8%BF%9B%E7%A8%8B/">
@@ -230,7 +230,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-13 11:22:51" itemprop="dateModified" datetime="2019-11-13T11:22:51+08:00">2019-11-13</time>
+                <time title="修改时间：2019-11-13 11:29:18" itemprop="dateModified" datetime="2019-11-13T11:29:18+08:00">2019-11-13</time>
               </span>
 
           
@@ -273,6 +273,8 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(emlfile, <span class="string">'rb'</span>) <span class="keyword">as</span> fhdl:</span><br><span class="line">	raw_email = fhdl.read()</span><br><span class="line">	eml = mime.from_string(raw_email)</span><br></pre></td></tr></table></figure>
 
 <p>这样就得到一个解析后的eml对象.</p>
+<a id="more"></a>
+
 <h2 id="获取发信人地址及昵称"><a href="#获取发信人地址及昵称" class="headerlink" title="获取发信人地址及昵称"></a>获取发信人地址及昵称</h2><p>从字段From中获取,地址为address,昵称为display_name:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">eml_header_from = eml.headers.get(<span class="string">'From'</span>)</span><br><span class="line">eml_from = address.parse(eml_header_from)</span><br><span class="line">from_address = eml_from.address</span><br><span class="line">from_display_name = eml_from.display_name</span><br></pre></td></tr></table></figure>
 
