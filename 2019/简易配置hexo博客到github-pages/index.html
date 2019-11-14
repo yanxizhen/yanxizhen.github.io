@@ -119,7 +119,8 @@
   </style>
 </noscript>
 
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-duotone-sea.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -293,11 +294,11 @@
 <pre><code>  npm install hexo-generator-sitemap --save
   npm install hexo-generator-baidu-sitemap --save</code></pre></li>
 <li><p>添加到sitemap字段到根目录的_config.yml</p>
-<pre class=" language-markdown"><code class="language-markdown">  sitemap:
+<pre class="line-numbers language-markdown"><code class="language-markdown">  sitemap:
 <span class="token code keyword">      path: sitemap.xml</span>
 
   baidusitemap:
-<span class="token code keyword">       path: baidusitemap.xml</span></code></pre>
+<span class="token code keyword">       path: baidusitemap.xml</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><p>hexo g一下,即可看到sources文件夹下生成了两个对应的sitemap文件  </p>
 </li>
@@ -307,20 +308,20 @@
 <ul>
 <li>这两个命令会分别在sources目录下创建categories和tags目录,编辑里面的index.md如下</li>
 </ul>
-<pre class=" language-markdown"><code class="language-markdown"><span class="token hr punctuation">---</span>
+<pre class="line-numbers language-markdown"><code class="language-markdown"><span class="token hr punctuation">---</span>
  title: 分类
  date: 2019-11-08 19:19:27
  type: categories
- <span class="token hr punctuation">---</span></code></pre>
-<pre class=" language-markdown"><code class="language-markdown"> <span class="token hr punctuation">---</span>
+ <span class="token hr punctuation">---</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-markdown"><code class="language-markdown"> <span class="token hr punctuation">---</span>
  title: 标签
  date: 2019-11-08 19:22:06
  type: tags
- <span class="token hr punctuation">---</span></code></pre>
+ <span class="token hr punctuation">---</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>修改主题下面的_config.yml的menu字段,将tags和categories注释去除</li>
 </ul>
-<pre class=" language-markdown"><code class="language-markdown">menu:
+<pre class="line-numbers language-markdown"><code class="language-markdown">menu:
   home: / || home
   <span class="token title important"><span class="token punctuation">#</span>about: /about/ || user</span>
   tags: /tags/ || tags
@@ -328,16 +329,16 @@
   archives: /archives/ || archive
   <span class="token title important"><span class="token punctuation">#</span>schedule: /schedule/ || calendar</span>
   sitemap: /sitemap.xml || sitemap
-  <span class="token title important"><span class="token punctuation">#</span>commonweal: /404/ || heartbeat</span></code></pre>
+  <span class="token title important"><span class="token punctuation">#</span>commonweal: /404/ || heartbeat</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>在具体文章的顶部添加分类和标签,分类只能指定一个,标签可以多个</li>
 </ul>
-<pre class=" language-markdown"><code class="language-markdown">categories: Hexo
+<pre class="line-numbers language-markdown"><code class="language-markdown">categories: Hexo
 tags:
 <span class="token list punctuation">-</span> Hexo
 <span class="token list punctuation">-</span> github
 <span class="token list punctuation">-</span> github pages
-<span class="token list punctuation">-</span> git</code></pre>
+<span class="token list punctuation">-</span> git<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ul>
 </li>
@@ -350,21 +351,21 @@ tags:
 <li><p>将根目录下的_config.yml里的theme字段改为next </p>
 </li>
 <li><p>代码高亮设置在theme的_config.yml里</p>
-<pre class=" language-markdown"><code class="language-markdown"><span class="token code keyword">        highlight_theme: night eighties</span></code></pre>
+<pre class="line-numbers language-markdown"><code class="language-markdown"><span class="token code keyword">        highlight_theme: night eighties</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 </ul>
 <h1 id="上传到github-pages"><a href="#上传到github-pages" class="headerlink" title="上传到github pages"></a>上传到github pages</h1><ul>
 <li>在github里建一个公开仓库,仓库名为<code>用户名.github.io</code></li>
 <li>安装插件<code>npm install hexo-deployer-git --save</code></li>
-<li>修改根目录下的_config.yml文件,添加下面代码<pre class=" language-markdown"><code class="language-markdown">  deploy:
+<li>修改根目录下的_config.yml文件,添加下面代码<pre class="line-numbers language-markdown"><code class="language-markdown">  deploy:
   type: <span class="token code keyword">`git`</span>
   repo:
 <span class="token code keyword">      github: https://github.com/用户名/用户名.github.io.git</span>
-  branch: master</code></pre>
+  branch: master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li>在站点文件夹下运行git bash,执行命令<pre class=" language-cmake"><code class="language-cmake">  git config --global user.name "用户名"
+<li>在站点文件夹下运行git bash,执行命令<pre class="line-numbers language-cmake"><code class="language-cmake">  git config --global user.name "用户名"
   git config --global user.email "邮箱"
-  ssh-keygen -t rsa -C `邮箱`</code></pre>
+  ssh-keygen -t rsa -C `邮箱`<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 </li>
 <li>将生成的ssh key添加到github的setting里的ssh key里面,再执行<code>ssh -T git@github.com</code>,后面即可使用<code>hexo g -d</code>将站点同步到github</li>
 </ul>
@@ -384,13 +385,13 @@ tags:
 <li><p><del>评论系统选择valine,同样使用leancloud平台,在配置中找到comments,并将active设置为valine,再去valine字段里设置appkey和appid即可,注意的是在leancloud的安全中心里,需设置域名:端口号格式(https为443)</del></p>
 </li>
 <li><p>评论系统最终选择<a href="https://utteranc.es" target="_blank" rel="external nofollow noopener noreferrer">utterances</a>,已经作为插件集成到next v7.5里,只需到<a href="https://github.com/apps/utterances" target="_blank" rel="external nofollow noopener noreferrer">这里</a>授权一下,然后在根目录只需<code>npm install --save github:theme-next/hexo-next-utteranc</code>,最后在主题配置文件添加如下配置即可:</p>
-<pre class=" language-markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span>utterances </span>
+<pre class="line-numbers language-markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span>utterances </span>
 utteranc:
   enable: true
   repo: 你的github用户名/公有仓库名                 # owner/repo
   issue_term: pathname   # pathname, url, title
   theme: github-light    # github-light or github-dark
-  cdn: https://utteranc.es/client.js</code></pre>
+  cdn: https://utteranc.es/client.js<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>加入<a href="http://tongji.baidu.com" target="_blank" rel="external nofollow noopener noreferrer">百度统计</a>,将hm.js?后面生成的id复制到主题配置文件的baidu统计字段</p>
 </li>
