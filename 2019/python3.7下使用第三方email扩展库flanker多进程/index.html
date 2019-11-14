@@ -53,7 +53,7 @@
 </script>
 
   <meta name="description" content="python3.7下使用第三方email扩展库flanker多进程批量解析eml格式文件信息到csvemail解析库flanker由mailgun开源的Flanker - email address and MIME parsing for Python是一个解析高效、容错率不错的python第三方扩展库。python 3也可以正常使用，安装通过pip install flanker即可。该库包含">
-<meta name="keywords" content="python,email,flanker,eml,github,多进程,csv">
+<meta name="keywords" content="python,多进程,github,email,flanker,eml,csv">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python3.7下使用第三方email扩展库flanker多进程批量解析eml格式文件信息到csv">
 <meta property="og:url" content="https:&#x2F;&#x2F;yanxizhen.github.io&#x2F;2019&#x2F;python3.7%E4%B8%8B%E4%BD%BF%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9email%E6%89%A9%E5%B1%95%E5%BA%93flanker%E5%A4%9A%E8%BF%9B%E7%A8%8B&#x2F;index.html">
@@ -79,7 +79,7 @@
 
   <title>python3.7下使用第三方email扩展库flanker多进程批量解析eml格式文件信息到csv | buu coding</title>
 
-  <link rel="stylesheet" href="/lib/prettify/skins/tomorrow-night-eighties.css" type="text/css">
+  <link rel="stylesheet" href="/lib/prettify/skins/.css" type="text/css">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="/lib/prettify/prettify.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -288,34 +288,34 @@
       
         <h1 id="python3-7下使用第三方email扩展库flanker多进程批量解析eml格式文件信息到csv"><a href="#python3-7下使用第三方email扩展库flanker多进程批量解析eml格式文件信息到csv" class="headerlink" title="python3.7下使用第三方email扩展库flanker多进程批量解析eml格式文件信息到csv"></a>python3.7下使用第三方email扩展库flanker多进程批量解析eml格式文件信息到csv</h1><h1 id="email解析库flanker"><a href="#email解析库flanker" class="headerlink" title="email解析库flanker"></a>email解析库flanker</h1><p>由mailgun开源的<a href="https://github.com/mailgun/flanker" target="_blank" rel="external nofollow noopener noreferrer">Flanker - email address and MIME parsing for Python</a>是一个解析高效、容错率不错的python第三方扩展库。python 3也可以正常使用，安装通过<code>pip install flanker</code>即可。该库包含了邮件地址解析和邮件mime格式解析。</p>
 <h1 id="使用pool-map-async实现多进程并行任务"><a href="#使用pool-map-async实现多进程并行任务" class="headerlink" title="使用pool.map_async实现多进程并行任务"></a>使用pool.map_async实现多进程并行任务</h1><p>为提高处理效率,使用了python里面的多进程pool,需要注意的是相关代码需在<strong>main</strong>里执行.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#多进程处理代码</span></span><br><span class="line">pool = Pool()</span><br><span class="line">proxy_func = partial(解析eml的函数, 参数<span class="number">1</span>)</span><br><span class="line">pool.map_async(proxy_func, 参数<span class="number">2</span>)</span><br><span class="line">pool.close()</span><br><span class="line">pool.join()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#多进程处理代码</span></span><br><span class="line">pool = Pool()</span><br><span class="line">proxy_func = partial(解析eml的函数, 参数<span class="number">1</span>)</span><br><span class="line">pool.map_async(proxy_func, 参数<span class="number">2</span>)</span><br><span class="line">pool.close()</span><br><span class="line">pool.join()</span><br></pre></td></tr></table></figure>
 
 <p>这里为了添加多个参数,使用了一个代理函数proxy_func.其中参数使用Manager来共享:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#存储配置到manager.dict中</span></span><br><span class="line">mgr = Manager()</span><br><span class="line">config_dict = mgr.dict()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#存储配置到manager.dict中</span></span><br><span class="line">mgr = Manager()</span><br><span class="line">config_dict = mgr.dict()</span><br></pre></td></tr></table></figure>
 
 
 
 <h1 id="解析eml格式文件"><a href="#解析eml格式文件" class="headerlink" title="解析eml格式文件"></a>解析eml格式文件</h1><p>eml是特定格式的文本文件,内容为MIME格式,使用flanker来解析eml会非常简单,首先读取文件:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(emlfile, <span class="string">'rb'</span>) <span class="keyword">as</span> fhdl:</span><br><span class="line">	raw_email = fhdl.read()</span><br><span class="line">	eml = mime.from_string(raw_email)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> open(emlfile, <span class="string">'rb'</span>) <span class="keyword">as</span> fhdl:</span><br><span class="line">	raw_email = fhdl.read()</span><br><span class="line">	eml = mime.from_string(raw_email)</span><br></pre></td></tr></table></figure>
 
 <p>这样就得到一个解析后的eml对象.</p>
 <a id="more"></a>
 
 <h2 id="获取发信人地址及昵称"><a href="#获取发信人地址及昵称" class="headerlink" title="获取发信人地址及昵称"></a>获取发信人地址及昵称</h2><p>从字段From中获取,地址为address,昵称为display_name:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">eml_header_from = eml.headers.get(<span class="string">'From'</span>)</span><br><span class="line">eml_from = address.parse(eml_header_from)</span><br><span class="line">from_address = eml_from.address</span><br><span class="line">from_display_name = eml_from.display_name</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">eml_header_from = eml.headers.get(<span class="string">'From'</span>)</span><br><span class="line">eml_from = address.parse(eml_header_from)</span><br><span class="line">from_address = eml_from.address</span><br><span class="line">from_display_name = eml_from.display_name</span><br></pre></td></tr></table></figure>
 
 <h2 id="解析附件列表"><a href="#解析附件列表" class="headerlink" title="解析附件列表"></a>解析附件列表</h2><p>一封email邮件可以有多个part,每个part可以有自己的格式,使用flanker可以快速简洁的解析出附件信息:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eml_attachs = <span class="string">';'</span>.join(x.detected_file_name <span class="keyword">for</span> x <span class="keyword">in</span> eml.parts <span class="keyword">if</span> x.detected_file_name)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">eml_attachs = <span class="string">';'</span>.join(x.detected_file_name <span class="keyword">for</span> x <span class="keyword">in</span> eml.parts <span class="keyword">if</span> x.detected_file_name)</span><br></pre></td></tr></table></figure>
 
 <h2 id="邮件正文"><a href="#邮件正文" class="headerlink" title="邮件正文"></a>邮件正文</h2><p>邮件正文要区别对待,属性为singlepart的,直接使用body属性即可取得.为multipart属性的,则需要递归处理.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> eml.content_type.is_singlepart(): </span><br><span class="line">	eml_body = eml.body       </span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="keyword">for</span> part <span class="keyword">in</span> eml.parts:</span><br><span class="line">		<span class="keyword">if</span> part.content_type.is_multipart():</span><br><span class="line">        	eml_body, charset = 递归函数(part)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">        	<span class="keyword">if</span> part.content_type.main == <span class="string">'text'</span>:</span><br><span class="line">            	eml_body += part.body</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> eml.content_type.is_singlepart(): </span><br><span class="line">	eml_body = eml.body       </span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="keyword">for</span> part <span class="keyword">in</span> eml.parts:</span><br><span class="line">		<span class="keyword">if</span> part.content_type.is_multipart():</span><br><span class="line">        	eml_body, charset = 递归函数(part)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">        	<span class="keyword">if</span> part.content_type.main == <span class="string">'text'</span>:</span><br><span class="line">            	eml_body += part.body</span><br></pre></td></tr></table></figure>
 
 <h2 id="收件人信息"><a href="#收件人信息" class="headerlink" title="收件人信息"></a>收件人信息</h2><p>其实就是解析eml文件里的To字段,多个地址的话,使用分号拼接:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">eml_to = eml.headers.get(<span class="string">'To'</span>)</span><br><span class="line">eml_to_addr = address.parse_list(eml_to)</span><br><span class="line"><span class="comment"># 多个地址以;拼接显示  </span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> type(eml_to_addr) == str:       </span><br><span class="line">	to_display_name = <span class="string">';'</span>.join(x.display_name <span class="keyword">for</span> x <span class="keyword">in</span> eml_to_addr <span class="keyword">if</span> x.display_name)</span><br><span class="line">	to_address = <span class="string">';'</span>.join(x.address <span class="keyword">for</span> x <span class="keyword">in</span> eml_to_addr <span class="keyword">if</span> x.address)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">eml_to = eml.headers.get(<span class="string">'To'</span>)</span><br><span class="line">eml_to_addr = address.parse_list(eml_to)</span><br><span class="line"><span class="comment"># 多个地址以;拼接显示  </span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> type(eml_to_addr) == str:       </span><br><span class="line">	to_display_name = <span class="string">';'</span>.join(x.display_name <span class="keyword">for</span> x <span class="keyword">in</span> eml_to_addr <span class="keyword">if</span> x.display_name)</span><br><span class="line">	to_address = <span class="string">';'</span>.join(x.address <span class="keyword">for</span> x <span class="keyword">in</span> eml_to_addr <span class="keyword">if</span> x.address)</span><br></pre></td></tr></table></figure>
 
 <h2 id="邮件主题"><a href="#邮件主题" class="headerlink" title="邮件主题"></a>邮件主题</h2><p>使用subject获取即可.</p>
 <h1 id="使用pandas转储信息到csv文件"><a href="#使用pandas转储信息到csv文件" class="headerlink" title="使用pandas转储信息到csv文件"></a>使用pandas转储信息到csv文件</h1><p>以上获取的信息存储到一个字典dict_emls里面,然后使用pandas转换一下,存储到csv文件,如果想存为excel文件,则需要对一些字段做特殊处理,较为麻烦:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame.from_dict(&#123; key:pd.Series(value) <span class="keyword">for</span> key, value <span class="keyword">in</span> dict_emls.items() &#125;)</span><br><span class="line">df.columns = [设置一下列名]</span><br><span class="line">df.to_csv(outfile, index=<span class="literal">False</span>, encoding=<span class="string">'utf_8_sig'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.DataFrame.from_dict(&#123; key:pd.Series(value) <span class="keyword">for</span> key, value <span class="keyword">in</span> dict_emls.items() &#125;)</span><br><span class="line">df.columns = [设置一下列名]</span><br><span class="line">df.to_csv(outfile, index=<span class="literal">False</span>, encoding=<span class="string">'utf_8_sig'</span>)</span><br></pre></td></tr></table></figure>
 
 
 
@@ -347,11 +347,11 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/%E5%A4%9A%E8%BF%9B%E7%A8%8B/" rel="tag"># 多进程</a>
+              <a href="/tags/github/" rel="tag"># github</a>
               <a href="/tags/email/" rel="tag"># email</a>
               <a href="/tags/flanker/" rel="tag"># flanker</a>
               <a href="/tags/eml/" rel="tag"># eml</a>
-              <a href="/tags/github/" rel="tag"># github</a>
-              <a href="/tags/%E5%A4%9A%E8%BF%9B%E7%A8%8B/" rel="tag"># 多进程</a>
               <a href="/tags/csv/" rel="tag"># csv</a>
           </div>
 
