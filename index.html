@@ -278,16 +278,20 @@
       
           <h1 id="python3-7下使用第三方email扩展库flanker多进程批量解析eml格式文件信息到csv"><a href="#python3-7下使用第三方email扩展库flanker多进程批量解析eml格式文件信息到csv" class="headerlink" title="python3.7下使用第三方email扩展库flanker多进程批量解析eml格式文件信息到csv"></a>python3.7下使用第三方email扩展库flanker多进程批量解析eml格式文件信息到csv</h1><h1 id="email解析库flanker"><a href="#email解析库flanker" class="headerlink" title="email解析库flanker"></a>email解析库flanker</h1><p>由mailgun开源的<a href="https://github.com/mailgun/flanker" target="_blank" rel="external nofollow noopener noreferrer">Flanker - email address and MIME parsing for Python</a>是一个解析高效、容错率不错的python第三方扩展库。python 3也可以正常使用，安装通过<code>pip install flanker</code>即可。该库包含了邮件地址解析和邮件mime格式解析。</p>
 <h1 id="使用pool-map-async实现多进程并行任务"><a href="#使用pool-map-async实现多进程并行任务" class="headerlink" title="使用pool.map_async实现多进程并行任务"></a>使用pool.map_async实现多进程并行任务</h1><p>为提高处理效率,使用了python里面的多进程pool,需要注意的是相关代码需在<strong>main</strong>里执行.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#多进程处理代码</span></span><br><span class="line">pool = Pool()</span><br><span class="line">proxy_func = partial(解析eml的函数, 参数<span class="number">1</span>)</span><br><span class="line">pool.map_async(proxy_func, 参数<span class="number">2</span>)</span><br><span class="line">pool.close()</span><br><span class="line">pool.join()</span><br></pre></td></tr></table></figure>
-
+<pre><code class="python">#多进程处理代码
+pool = Pool()
+proxy_func = partial(解析eml的函数, 参数1)
+pool.map_async(proxy_func, 参数2)
+pool.close()
+pool.join()</code></pre>
 <p>这里为了添加多个参数,使用了一个代理函数proxy_func.其中参数使用Manager来共享:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#存储配置到manager.dict中</span></span><br><span class="line">mgr = Manager()</span><br><span class="line">config_dict = mgr.dict()</span><br></pre></td></tr></table></figure>
-
-
-
+<pre><code class="python">#存储配置到manager.dict中
+mgr = Manager()
+config_dict = mgr.dict()</code></pre>
 <h1 id="解析eml格式文件"><a href="#解析eml格式文件" class="headerlink" title="解析eml格式文件"></a>解析eml格式文件</h1><p>eml是特定格式的文本文件,内容为MIME格式,使用flanker来解析eml会非常简单,首先读取文件:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> open(emlfile, <span class="string">'rb'</span>) <span class="keyword">as</span> fhdl:</span><br><span class="line">	raw_email = fhdl.read()</span><br><span class="line">	eml = mime.from_string(raw_email)</span><br></pre></td></tr></table></figure>
-
+<pre><code class="python">with open(emlfile, &#39;rb&#39;) as fhdl:
+    raw_email = fhdl.read()
+    eml = mime.from_string(raw_email)</code></pre>
 <p>这样就得到一个解析后的eml对象.</p>
           <!--noindex-->
             <div class="post-button">
@@ -399,10 +403,14 @@
 <li><p>执行<code>hexo server</code>,即可在本机地址的4000端口看到初始站点页面</p>
 </li>
 <li><p>优化seo：执行下面两条命令安装sitemap插件</p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save</span><br><span class="line">npm install hexo-generator-baidu-sitemap --save</span><br></pre></td></tr></table></figure></li>
+<pre><code>  npm install hexo-generator-sitemap --save
+  npm install hexo-generator-baidu-sitemap --save</code></pre></li>
 <li><p>添加到sitemap字段到根目录的_config.yml</p>
-  <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">sitemap:</span><br><span class="line"><span class="code">	path: sitemap.xml</span></span><br><span class="line"></span><br><span class="line">baidusitemap:</span><br><span class="line"> 	path: baidusitemap.xml</span><br></pre></td></tr></table></figure>
+<pre><code class="markdown">  sitemap:
+      path: sitemap.xml
 
+  baidusitemap:
+       path: baidusitemap.xml</code></pre>
 <ul>
 <li><p>hexo g一下,即可看到sources文件夹下生成了两个对应的sitemap文件  </p>
 </li>
@@ -412,20 +420,37 @@
 <ul>
 <li>这两个命令会分别在sources目录下创建categories和tags目录,编辑里面的index.md如下</li>
 </ul>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line"><span class="code">    title: 分类</span></span><br><span class="line"><span class="code">    date: 2019-11-08 19:19:27</span></span><br><span class="line"><span class="code">    type: categories</span></span><br><span class="line"><span class="code">    ---</span></span><br></pre></td></tr></table></figure>
-
- <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 标签</span><br><span class="line">date: 2019-11-08 19:22:06</span><br><span class="line">type: tags</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
+<pre><code class="markdown">---
+ title: 分类
+ date: 2019-11-08 19:19:27
+ type: categories
+ ---</code></pre>
+<pre><code class="markdown"> ---
+ title: 标签
+ date: 2019-11-08 19:22:06
+ type: tags
+ ---</code></pre>
 <ul>
 <li>修改主题下面的_config.yml的menu字段,将tags和categories注释去除</li>
 </ul>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || home</span><br><span class="line">  #about: /about/ || user</span><br><span class="line">  tags: /tags/ || tags</span><br><span class="line">  categories: /categories/ || th</span><br><span class="line">  archives: /archives/ || archive</span><br><span class="line">  #schedule: /schedule/ || calendar</span><br><span class="line">  sitemap: /sitemap.xml || sitemap</span><br><span class="line">  #commonweal: /404/ || heartbeat</span><br></pre></td></tr></table></figure>
-
+<pre><code class="markdown">menu:
+  home: / || home
+  #about: /about/ || user
+  tags: /tags/ || tags
+  categories: /categories/ || th
+  archives: /archives/ || archive
+  #schedule: /schedule/ || calendar
+  sitemap: /sitemap.xml || sitemap
+  #commonweal: /404/ || heartbeat</code></pre>
 <ul>
 <li>在具体文章的顶部添加分类和标签,分类只能指定一个,标签可以多个</li>
 </ul>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">categories: Hexo</span><br><span class="line">tags:</span><br><span class="line"><span class="bullet">- </span>Hexo</span><br><span class="line"><span class="bullet">- </span>github</span><br><span class="line"><span class="bullet">- </span>github pages</span><br><span class="line"><span class="bullet">- </span>git</span><br></pre></td></tr></table></figure>
-
+<pre><code class="markdown">categories: Hexo
+tags:
+- Hexo
+- github
+- github pages
+- git</code></pre>
 </li>
 </ul>
 </li>
